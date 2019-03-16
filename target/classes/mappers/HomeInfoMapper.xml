@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.monco.mapper.HomeInfoMapper">
+    <resultMap id="BaseResultMap" type="com.monco.entity.HomeInfo">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="address_id" jdbcType="BIGINT" property="addressId"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="home_type" jdbcType="INTEGER" property="homeType"/>
+        <result column="score" jdbcType="DOUBLE" property="score"/>
+        <result column="credit" jdbcType="DOUBLE" property="credit"/>
+        <result column="pic" jdbcType="VARCHAR" property="pic"/>
+        <result column="user_id" jdbcType="BIGINT" property="userId"/>
+        <result column="create_date" jdbcType="TIMESTAMP" property="createDate"/>
+        <result column="create_name" jdbcType="VARCHAR" property="createName"/>
+        <result column="create_id" jdbcType="BIGINT" property="createId"/>
+        <result column="update_date" jdbcType="TIMESTAMP" property="updateDate"/>
+        <result column="update_name" jdbcType="VARCHAR" property="updateName"/>
+        <result column="update_id" jdbcType="BIGINT" property="updateId"/>
+        <result column="version" jdbcType="BIGINT" property="version"/>
+        <result column="data_status" jdbcType="INTEGER" property="dataStatus"/>
+        <result column="data_delete" jdbcType="INTEGER" property="dataDelete"/>
+        <result column="remarks" jdbcType="VARCHAR" property="remarks"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, name, address_id, phone, home_type, score, credit, pic, user_id, create_date, 
+    create_name, create_id, update_date, update_name, update_id, version, data_status, 
+    data_delete, remarks
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_home_info
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_home_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+    <insert id="insert" parameterType="com.monco.entity.HomeInfo">
+    insert into t_home_info (id, name, address_id, 
+      phone, home_type, score, 
+      credit, pic, user_id, 
+      create_date, create_name, create_id, 
+      update_date, update_name, update_id, 
+      version, data_status, data_delete, 
+      remarks)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{addressId,jdbcType=BIGINT}, 
+      #{phone,jdbcType=VARCHAR}, #{homeType,jdbcType=INTEGER}, #{score,jdbcType=DOUBLE}, 
+      #{credit,jdbcType=DOUBLE}, #{pic,jdbcType=VARCHAR}, #{userId,jdbcType=BIGINT}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{createName,jdbcType=VARCHAR}, #{createId,jdbcType=BIGINT}, 
+      #{updateDate,jdbcType=TIMESTAMP}, #{updateName,jdbcType=VARCHAR}, #{updateId,jdbcType=BIGINT}, 
+      #{version,jdbcType=BIGINT}, #{dataStatus,jdbcType=INTEGER}, #{dataDelete,jdbcType=INTEGER}, 
+      #{remarks,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.monco.entity.HomeInfo">
+        insert into t_home_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="addressId != null">
+                address_id,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="homeType != null">
+                home_type,
+            </if>
+            <if test="score != null">
+                score,
+            </if>
+            <if test="credit != null">
+                credit,
+            </if>
+            <if test="pic != null">
+                pic,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="createDate != null">
+                create_date,
+            </if>
+            <if test="createName != null">
+                create_name,
+            </if>
+            <if test="createId != null">
+                create_id,
+            </if>
+            <if test="updateDate != null">
+                update_date,
+            </if>
+            <if test="updateName != null">
+                update_name,
+            </if>
+            <if test="updateId != null">
+                update_id,
+            </if>
+            <if test="version != null">
+                version,
+            </if>
+            <if test="dataStatus != null">
+                data_status,
+            </if>
+            <if test="dataDelete != null">
+                data_delete,
+            </if>
+            <if test="remarks != null">
+                remarks,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="addressId != null">
+                #{addressId,jdbcType=BIGINT},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="homeType != null">
+                #{homeType,jdbcType=INTEGER},
+            </if>
+            <if test="score != null">
+                #{score,jdbcType=DOUBLE},
+            </if>
+            <if test="credit != null">
+                #{credit,jdbcType=DOUBLE},
+            </if>
+            <if test="pic != null">
+                #{pic,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=BIGINT},
+            </if>
+            <if test="createDate != null">
+                #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createName != null">
+                #{createName,jdbcType=VARCHAR},
+            </if>
+            <if test="createId != null">
+                #{createId,jdbcType=BIGINT},
+            </if>
+            <if test="updateDate != null">
+                #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateName != null">
+                #{updateName,jdbcType=VARCHAR},
+            </if>
+            <if test="updateId != null">
+                #{updateId,jdbcType=BIGINT},
+            </if>
+            <if test="version != null">
+                #{version,jdbcType=BIGINT},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=INTEGER},
+            </if>
+            <if test="dataDelete != null">
+                #{dataDelete,jdbcType=INTEGER},
+            </if>
+            <if test="remarks != null">
+                #{remarks,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.monco.entity.HomeInfo">
+        update t_home_info
+        <set>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="addressId != null">
+                address_id = #{addressId,jdbcType=BIGINT},
+            </if>
+            <if test="phone != null">
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="homeType != null">
+                home_type = #{homeType,jdbcType=INTEGER},
+            </if>
+            <if test="score != null">
+                score = #{score,jdbcType=DOUBLE},
+            </if>
+            <if test="credit != null">
+                credit = #{credit,jdbcType=DOUBLE},
+            </if>
+            <if test="pic != null">
+                pic = #{pic,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=BIGINT},
+            </if>
+            <if test="createDate != null">
+                create_date = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createName != null">
+                create_name = #{createName,jdbcType=VARCHAR},
+            </if>
+            <if test="createId != null">
+                create_id = #{createId,jdbcType=BIGINT},
+            </if>
+            <if test="updateDate != null">
+                update_date = #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateName != null">
+                update_name = #{updateName,jdbcType=VARCHAR},
+            </if>
+            <if test="updateId != null">
+                update_id = #{updateId,jdbcType=BIGINT},
+            </if>
+            <if test="version != null">
+                version = #{version,jdbcType=BIGINT},
+            </if>
+            <if test="dataStatus != null">
+                data_status = #{dataStatus,jdbcType=INTEGER},
+            </if>
+            <if test="dataDelete != null">
+                data_delete = #{dataDelete,jdbcType=INTEGER},
+            </if>
+            <if test="remarks != null">
+                remarks = #{remarks,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.monco.entity.HomeInfo">
+    update t_home_info
+    set name = #{name,jdbcType=VARCHAR},
+      address_id = #{addressId,jdbcType=BIGINT},
+      phone = #{phone,jdbcType=VARCHAR},
+      home_type = #{homeType,jdbcType=INTEGER},
+      score = #{score,jdbcType=DOUBLE},
+      credit = #{credit,jdbcType=DOUBLE},
+      pic = #{pic,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=BIGINT},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      create_name = #{createName,jdbcType=VARCHAR},
+      create_id = #{createId,jdbcType=BIGINT},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      update_name = #{updateName,jdbcType=VARCHAR},
+      update_id = #{updateId,jdbcType=BIGINT},
+      version = #{version,jdbcType=BIGINT},
+      data_status = #{dataStatus,jdbcType=INTEGER},
+      data_delete = #{dataDelete,jdbcType=INTEGER},
+      remarks = #{remarks,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+    <select id="selectAll" resultMap="BaseResultMap" parameterType="com.monco.entity.HomeInfo">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM t_home_info where 1=1 and data_delete = 0
+    </select>
+</mapper>

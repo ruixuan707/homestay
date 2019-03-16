@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.monco.mapper.RoomOrderMapper">
+  <resultMap id="BaseResultMap" type="com.monco.entity.RoomOrder">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="order_code" jdbcType="VARCHAR" property="orderCode" />
+    <result column="order_status" jdbcType="INTEGER" property="orderStatus" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="room_id" jdbcType="BIGINT" property="roomId" />
+    <result column="stay_date" jdbcType="VARCHAR" property="stayDate" />
+    <result column="stay_days" jdbcType="INTEGER" property="stayDays" />
+    <result column="cost" jdbcType="DECIMAL" property="cost" />
+    <result column="cost_status" jdbcType="INTEGER" property="costStatus" />
+    <result column="score" jdbcType="DOUBLE" property="score" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="create_name" jdbcType="VARCHAR" property="createName" />
+    <result column="create_id" jdbcType="BIGINT" property="createId" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="update_name" jdbcType="VARCHAR" property="updateName" />
+    <result column="update_id" jdbcType="BIGINT" property="updateId" />
+    <result column="version" jdbcType="BIGINT" property="version" />
+    <result column="data_status" jdbcType="INTEGER" property="dataStatus" />
+    <result column="data_delete" jdbcType="INTEGER" property="dataDelete" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, order_code, order_status, user_id, room_id, stay_date, stay_days, cost, cost_status, 
+    score, create_date, create_name, create_id, update_date, update_name, update_id, 
+    version, data_status, data_delete, remarks
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_room_order
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_room_order
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.monco.entity.RoomOrder">
+    insert into t_room_order (id, order_code, order_status, 
+      user_id, room_id, stay_date, 
+      stay_days, cost, cost_status, 
+      score, create_date, create_name, 
+      create_id, update_date, update_name, 
+      update_id, version, data_status, 
+      data_delete, remarks)
+    values (#{id,jdbcType=BIGINT}, #{orderCode,jdbcType=VARCHAR}, #{orderStatus,jdbcType=INTEGER}, 
+      #{userId,jdbcType=BIGINT}, #{roomId,jdbcType=BIGINT}, #{stayDate,jdbcType=VARCHAR}, 
+      #{stayDays,jdbcType=INTEGER}, #{cost,jdbcType=DECIMAL}, #{costStatus,jdbcType=INTEGER}, 
+      #{score,jdbcType=DOUBLE}, #{createDate,jdbcType=TIMESTAMP}, #{createName,jdbcType=VARCHAR}, 
+      #{createId,jdbcType=BIGINT}, #{updateDate,jdbcType=TIMESTAMP}, #{updateName,jdbcType=VARCHAR}, 
+      #{updateId,jdbcType=BIGINT}, #{version,jdbcType=BIGINT}, #{dataStatus,jdbcType=INTEGER}, 
+      #{dataDelete,jdbcType=INTEGER}, #{remarks,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.monco.entity.RoomOrder">
+    insert into t_room_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderCode != null">
+        order_code,
+      </if>
+      <if test="orderStatus != null">
+        order_status,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="roomId != null">
+        room_id,
+      </if>
+      <if test="stayDate != null">
+        stay_date,
+      </if>
+      <if test="stayDays != null">
+        stay_days,
+      </if>
+      <if test="cost != null">
+        cost,
+      </if>
+      <if test="costStatus != null">
+        cost_status,
+      </if>
+      <if test="score != null">
+        score,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="createName != null">
+        create_name,
+      </if>
+      <if test="createId != null">
+        create_id,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+      <if test="updateName != null">
+        update_name,
+      </if>
+      <if test="updateId != null">
+        update_id,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="dataStatus != null">
+        data_status,
+      </if>
+      <if test="dataDelete != null">
+        data_delete,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderCode != null">
+        #{orderCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null">
+        #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="roomId != null">
+        #{roomId,jdbcType=BIGINT},
+      </if>
+      <if test="stayDate != null">
+        #{stayDate,jdbcType=VARCHAR},
+      </if>
+      <if test="stayDays != null">
+        #{stayDays,jdbcType=INTEGER},
+      </if>
+      <if test="cost != null">
+        #{cost,jdbcType=DECIMAL},
+      </if>
+      <if test="costStatus != null">
+        #{costStatus,jdbcType=INTEGER},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=DOUBLE},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createName != null">
+        #{createName,jdbcType=VARCHAR},
+      </if>
+      <if test="createId != null">
+        #{createId,jdbcType=BIGINT},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateName != null">
+        #{updateName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateId != null">
+        #{updateId,jdbcType=BIGINT},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=BIGINT},
+      </if>
+      <if test="dataStatus != null">
+        #{dataStatus,jdbcType=INTEGER},
+      </if>
+      <if test="dataDelete != null">
+        #{dataDelete,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.monco.entity.RoomOrder">
+    update t_room_order
+    <set>
+      <if test="orderCode != null">
+        order_code = #{orderCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null">
+        order_status = #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="roomId != null">
+        room_id = #{roomId,jdbcType=BIGINT},
+      </if>
+      <if test="stayDate != null">
+        stay_date = #{stayDate,jdbcType=VARCHAR},
+      </if>
+      <if test="stayDays != null">
+        stay_days = #{stayDays,jdbcType=INTEGER},
+      </if>
+      <if test="cost != null">
+        cost = #{cost,jdbcType=DECIMAL},
+      </if>
+      <if test="costStatus != null">
+        cost_status = #{costStatus,jdbcType=INTEGER},
+      </if>
+      <if test="score != null">
+        score = #{score,jdbcType=DOUBLE},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createName != null">
+        create_name = #{createName,jdbcType=VARCHAR},
+      </if>
+      <if test="createId != null">
+        create_id = #{createId,jdbcType=BIGINT},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateName != null">
+        update_name = #{updateName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateId != null">
+        update_id = #{updateId,jdbcType=BIGINT},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=BIGINT},
+      </if>
+      <if test="dataStatus != null">
+        data_status = #{dataStatus,jdbcType=INTEGER},
+      </if>
+      <if test="dataDelete != null">
+        data_delete = #{dataDelete,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.monco.entity.RoomOrder">
+    update t_room_order
+    set order_code = #{orderCode,jdbcType=VARCHAR},
+      order_status = #{orderStatus,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=BIGINT},
+      room_id = #{roomId,jdbcType=BIGINT},
+      stay_date = #{stayDate,jdbcType=VARCHAR},
+      stay_days = #{stayDays,jdbcType=INTEGER},
+      cost = #{cost,jdbcType=DECIMAL},
+      cost_status = #{costStatus,jdbcType=INTEGER},
+      score = #{score,jdbcType=DOUBLE},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      create_name = #{createName,jdbcType=VARCHAR},
+      create_id = #{createId,jdbcType=BIGINT},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      update_name = #{updateName,jdbcType=VARCHAR},
+      update_id = #{updateId,jdbcType=BIGINT},
+      version = #{version,jdbcType=BIGINT},
+      data_status = #{dataStatus,jdbcType=INTEGER},
+      data_delete = #{dataDelete,jdbcType=INTEGER},
+      remarks = #{remarks,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

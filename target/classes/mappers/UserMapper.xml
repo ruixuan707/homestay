@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.monco.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.monco.entity.User">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="nick_name" jdbcType="VARCHAR" property="nickName"/>
+        <result column="user_type" jdbcType="INTEGER" property="userType"/>
+        <result column="address_id" jdbcType="BIGINT" property="addressId"/>
+        <result column="sex" jdbcType="INTEGER" property="sex"/>
+        <result column="age" jdbcType="INTEGER" property="age"/>
+        <result column="identity_code" jdbcType="VARCHAR" property="identityCode"/>
+        <result column="phone_code" jdbcType="VARCHAR" property="phoneCode"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="we_chat_code" jdbcType="VARCHAR" property="weChatCode"/>
+        <result column="create_date" jdbcType="TIMESTAMP" property="createDate"/>
+        <result column="create_name" jdbcType="VARCHAR" property="createName"/>
+        <result column="create_id" jdbcType="BIGINT" property="createId"/>
+        <result column="update_date" jdbcType="TIMESTAMP" property="updateDate"/>
+        <result column="update_name" jdbcType="VARCHAR" property="updateName"/>
+        <result column="update_id" jdbcType="BIGINT" property="updateId"/>
+        <result column="version" jdbcType="BIGINT" property="version"/>
+        <result column="data_status" jdbcType="INTEGER" property="dataStatus"/>
+        <result column="data_delete" jdbcType="INTEGER" property="dataDelete"/>
+        <result column="remarks" jdbcType="VARCHAR" property="remarks"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, username, password, nick_name, user_type, address_id, sex, age, identity_code, 
+    phone_code, email, we_chat_code, create_date, create_name, create_id, update_date, 
+    update_name, update_id, version, data_status, data_delete, remarks
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_user
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+    <insert id="insert" parameterType="com.monco.entity.User">
+    insert into t_user (id, username, password, 
+      nick_name, user_type, address_id, 
+      sex, age, identity_code, 
+      phone_code, email, we_chat_code, 
+      create_date, create_name, create_id, 
+      update_date, update_name, update_id, 
+      version, data_status, data_delete, 
+      remarks)
+    values (#{id,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{nickName,jdbcType=VARCHAR}, #{userType,jdbcType=INTEGER}, #{addressId,jdbcType=BIGINT}, 
+      #{sex,jdbcType=INTEGER}, #{age,jdbcType=INTEGER}, #{identityCode,jdbcType=VARCHAR}, 
+      #{phoneCode,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{weChatCode,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{createName,jdbcType=VARCHAR}, #{createId,jdbcType=BIGINT}, 
+      #{updateDate,jdbcType=TIMESTAMP}, #{updateName,jdbcType=VARCHAR}, #{updateId,jdbcType=BIGINT}, 
+      #{version,jdbcType=BIGINT}, #{dataStatus,jdbcType=INTEGER}, #{dataDelete,jdbcType=INTEGER}, 
+      #{remarks,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.monco.entity.User">
+        insert into t_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="username != null">
+                username,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="nickName != null">
+                nick_name,
+            </if>
+            <if test="userType != null">
+                user_type,
+            </if>
+            <if test="addressId != null">
+                address_id,
+            </if>
+            <if test="sex != null">
+                sex,
+            </if>
+            <if test="age != null">
+                age,
+            </if>
+            <if test="identityCode != null">
+                identity_code,
+            </if>
+            <if test="phoneCode != null">
+                phone_code,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+            <if test="weChatCode != null">
+                we_chat_code,
+            </if>
+            <if test="createDate != null">
+                create_date,
+            </if>
+            <if test="createName != null">
+                create_name,
+            </if>
+            <if test="createId != null">
+                create_id,
+            </if>
+            <if test="updateDate != null">
+                update_date,
+            </if>
+            <if test="updateName != null">
+                update_name,
+            </if>
+            <if test="updateId != null">
+                update_id,
+            </if>
+            <if test="version != null">
+                version,
+            </if>
+            <if test="dataStatus != null">
+                data_status,
+            </if>
+            <if test="dataDelete != null">
+                data_delete,
+            </if>
+            <if test="remarks != null">
+                remarks,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="nickName != null">
+                #{nickName,jdbcType=VARCHAR},
+            </if>
+            <if test="userType != null">
+                #{userType,jdbcType=INTEGER},
+            </if>
+            <if test="addressId != null">
+                #{addressId,jdbcType=BIGINT},
+            </if>
+            <if test="sex != null">
+                #{sex,jdbcType=INTEGER},
+            </if>
+            <if test="age != null">
+                #{age,jdbcType=INTEGER},
+            </if>
+            <if test="identityCode != null">
+                #{identityCode,jdbcType=VARCHAR},
+            </if>
+            <if test="phoneCode != null">
+                #{phoneCode,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="weChatCode != null">
+                #{weChatCode,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null">
+                #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createName != null">
+                #{createName,jdbcType=VARCHAR},
+            </if>
+            <if test="createId != null">
+                #{createId,jdbcType=BIGINT},
+            </if>
+            <if test="updateDate != null">
+                #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateName != null">
+                #{updateName,jdbcType=VARCHAR},
+            </if>
+            <if test="updateId != null">
+                #{updateId,jdbcType=BIGINT},
+            </if>
+            <if test="version != null">
+                #{version,jdbcType=BIGINT},
+            </if>
+            <if test="dataStatus != null">
+                #{dataStatus,jdbcType=INTEGER},
+            </if>
+            <if test="dataDelete != null">
+                #{dataDelete,jdbcType=INTEGER},
+            </if>
+            <if test="remarks != null">
+                #{remarks,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.monco.entity.User">
+        update t_user
+        <set>
+            <if test="username != null">
+                username = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="nickName != null">
+                nick_name = #{nickName,jdbcType=VARCHAR},
+            </if>
+            <if test="userType != null">
+                user_type = #{userType,jdbcType=INTEGER},
+            </if>
+            <if test="addressId != null">
+                address_id = #{addressId,jdbcType=BIGINT},
+            </if>
+            <if test="sex != null">
+                sex = #{sex,jdbcType=INTEGER},
+            </if>
+            <if test="age != null">
+                age = #{age,jdbcType=INTEGER},
+            </if>
+            <if test="identityCode != null">
+                identity_code = #{identityCode,jdbcType=VARCHAR},
+            </if>
+            <if test="phoneCode != null">
+                phone_code = #{phoneCode,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="weChatCode != null">
+                we_chat_code = #{weChatCode,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null">
+                create_date = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createName != null">
+                create_name = #{createName,jdbcType=VARCHAR},
+            </if>
+            <if test="createId != null">
+                create_id = #{createId,jdbcType=BIGINT},
+            </if>
+            <if test="updateDate != null">
+                update_date = #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateName != null">
+                update_name = #{updateName,jdbcType=VARCHAR},
+            </if>
+            <if test="updateId != null">
+                update_id = #{updateId,jdbcType=BIGINT},
+            </if>
+            <if test="version != null">
+                version = #{version,jdbcType=BIGINT},
+            </if>
+            <if test="dataStatus != null">
+                data_status = #{dataStatus,jdbcType=INTEGER},
+            </if>
+            <if test="dataDelete != null">
+                data_delete = #{dataDelete,jdbcType=INTEGER},
+            </if>
+            <if test="remarks != null">
+                remarks = #{remarks,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.monco.entity.User">
+    update t_user
+    set username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      nick_name = #{nickName,jdbcType=VARCHAR},
+      user_type = #{userType,jdbcType=INTEGER},
+      address_id = #{addressId,jdbcType=BIGINT},
+      sex = #{sex,jdbcType=INTEGER},
+      age = #{age,jdbcType=INTEGER},
+      identity_code = #{identityCode,jdbcType=VARCHAR},
+      phone_code = #{phoneCode,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      we_chat_code = #{weChatCode,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      create_name = #{createName,jdbcType=VARCHAR},
+      create_id = #{createId,jdbcType=BIGINT},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      update_name = #{updateName,jdbcType=VARCHAR},
+      update_id = #{updateId,jdbcType=BIGINT},
+      version = #{version,jdbcType=BIGINT},
+      data_status = #{dataStatus,jdbcType=INTEGER},
+      data_delete = #{dataDelete,jdbcType=INTEGER},
+      remarks = #{remarks,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+
+
+    <select id="selectAll" resultMap="BaseResultMap" parameterType="com.monco.entity.User">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM t_user where 1=1 and data_delete = 0
+    </select>
+
+    <select id="login" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_user a
+        where a.username = #{username} and
+        a.password = #{password}
+    </select>
+</mapper>
